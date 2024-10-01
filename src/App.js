@@ -114,11 +114,11 @@ function App() {
         {/*END Carousel */}
 
         {/* CARD  */}
-        <Row style={{marginTop: '25px'}}>
+        <Row className="mt-5">
 
           <Col>
-            <Card style={{ width: '18rem' }}>
-              <Card.Img variant="top" src={Pizza1}  style={{objectFit: 'cover', height: '17rem', width: '18rem'}}/>
+            <Card >
+              <Card.Img variant="top" src={Pizza1} />
               <Card.Body>
                 <Card.Title>Card Title</Card.Title>
                 <Card.Text>
@@ -131,8 +131,8 @@ function App() {
           </Col>
 
           <Col>
-            <Card style={{ width: '18rem' }}>
-              <Card.Img variant="top" src={Pizza2}  style={{objectFit: 'cover', height: '17rem', width: '18rem'}}/>
+            <Card >
+              <Card.Img variant="top" src={Pizza2}  />
               <Card.Body>
                 <Card.Title>Card Title</Card.Title>
                 <Card.Text>
@@ -145,8 +145,8 @@ function App() {
           </Col>
 
           <Col>
-            <Card style={{ width: '18rem' }}>
-              <Card.Img variant="top" src={Pizza3}  style={{objectFit: 'cover', height: '17rem', width: '18rem'}}/>
+            <Card >
+              <Card.Img variant="top" src={Pizza3}  />
               <Card.Body>
                 <Card.Title>Card Title</Card.Title>
                 <Card.Text>
@@ -159,8 +159,8 @@ function App() {
           </Col>
         
           <Col>
-            <Card style={{ width: '18rem' }}>
-              <Card.Img variant="top" src={Pizza4}  style={{objectFit: 'cover', height: '17rem', width: '18rem'}}/>
+            <Card>
+              <Card.Img variant="top" src={Pizza4} />
               <Card.Body>
                 <Card.Title>Card Title</Card.Title>
                 <Card.Text>
