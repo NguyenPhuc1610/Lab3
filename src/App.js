@@ -13,8 +13,13 @@ import {
   Nav,
   Navbar,
   NavDropdown,
-  Row
+  Row,
+  Carousel
 } from "react-bootstrap";
+
+import img1 from './Images/menu1.jpg';
+import img2 from './Images/menu2.jpg';
+import img3 from './Images/menu3.jpg';
 
 function App() {
   return (
@@ -65,7 +70,31 @@ function App() {
         {/*END NAVBAR */}
 
         <Row>
-          
+          <Carousel slide={false}>
+            <Carousel.Item>
+              <img text="First slide" src={img1} alt="ảnh 1" style={{objectFit: 'cover', width: '1296px', height: '300px'}}/>
+              <Carousel.Caption>
+                <h3>First slide label</h3>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+            <img text="First slide" src={img2} alt="ảnh 1" style={{objectFit: 'cover', width: '1296px', height: '300px'}}/>
+              <Carousel.Caption>
+                <h3>Second slide label</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+            <img text="First slide" src={img3} alt="ảnh 1" style={{objectFit: 'cover', width: '1296px', height: '300px'}}/>
+              <Carousel.Caption>
+                <h3>Third slide label</h3>
+                <p>
+                  Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+                </p>
+              </Carousel.Caption>
+            </Carousel.Item>
+          </Carousel>
         </Row>
 
 
