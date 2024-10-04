@@ -1,19 +1,12 @@
-import {
-  Container,
-  Button,
-  Nav,
-  Navbar,
-  NavDropdown,
-  Row,
-  Carousel,
-  Col,
-  Card,
-  Modal,
-  Alert,
-} from "react-bootstrap";
-import img1 from "./Images/menu1.jpg";
-import img2 from "./Images/menu2.jpg";
-import img3 from "./Images/menu3.jpg";
+import {Container,Button,Nav,Navbar,NavDropdown,Row,Carousel,Col,Card,Modal,Alert,} from "react-bootstrap";
+import img1 from "./Images/pizza1.jpg";
+import img2 from "./Images/pizza2.jpg";
+import img3 from "./Images/pizza3.jpg";
+import img4 from "./Images/pizza4.jpg";
+import menu1 from "./Images/menu1.jpg";
+import menu2 from "./Images/menu2.jpg";
+import menu3 from "./Images/menu3.jpg";
+import menu4 from "./Images/menu4.jpg";
 import { useEffect, useState, useReducer } from "react";
 
 const initialState = {
@@ -23,7 +16,7 @@ const initialState = {
 // Reducer function
 const reducer = (state, action) => {
   switch (action.type) {
-    case "ADD_TO_CART": // Thêm sản phẩm vào giỏ hàng
+    case "ADD_TO_CART": // Add product to cart
       const existingItem = state.cart.find(
         (item) => item.id === action.payload.id
       );
@@ -42,7 +35,7 @@ const reducer = (state, action) => {
         cart: [...state.cart, { ...action.payload, quantity: 1 }],
       };
 
-    case "INCREMENT_QUANTITY": // tăng số lượng sản phẩm trong giỏ hàng
+    case "INCREMENT_QUANTITY": // Increase the number of products in the cart
       return {
         ...state,
         cart: state.cart.map((item) =>
@@ -52,7 +45,7 @@ const reducer = (state, action) => {
         ),
       };
 
-    case "DECREMENT_QUANTITY": // giảm
+    case "DECREMENT_QUANTITY": // Reduce the number of products in the cart
       return {
         ...state,
         cart: state.cart.map((item) =>
@@ -62,7 +55,7 @@ const reducer = (state, action) => {
         ),
       };
 
-    case "REMOVE_FROM_CART": // xóa
+    case "REMOVE_FROM_CART": // Remove product from cart
       return {
         ...state,
         cart: state.cart.filter((item) => item.id !== action.payload),
@@ -82,7 +75,7 @@ function MyVerticallyCenteredModal({
   dispatch,
   setShowAlert,
 }) {
-  // Hàm tính tổng tất cả sản phẩm
+ // Function to calculate the total of all products
   const calculateTotalPrice = () => {
     return cart
       .reduce((total, item) => total + item.price * item.quantity, 0)
@@ -101,7 +94,7 @@ function MyVerticallyCenteredModal({
         <Modal.Title id="contained-modal-title-vcenter">Your Cart</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {/* Kiểm tra có sản phẩm nà trong giỏ hàng không  */}
+       {/* Check if there are any products in the cart */}
         {cart.length > 0 ? (
           <>
             {cart.map((item) => (
@@ -176,27 +169,12 @@ function MyVerticallyCenteredModal({
 // END SHOW MODAL
 
 function App() {
-  const [data, setData] = useState([]);
   const [modalShow, setModalShow] = useState(false);
-  const [showAlert, setShowAlert] = useState(false); // trạng thái thông báo
+  const [showAlert, setShowAlert] = useState(false); // Notification status
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // FETCH API
-  useEffect(() => {
-    const fetchProducts = async () => {
-      fetch("https://dummyjson.com/products")
-        .then((res) => res.json())
-        .then((data) => {
-          setData(data.products);
-        });
-    };
-
-    fetchProducts();
-  }, []);
-  // END FETCH API
-
-  // sau 3s thông báo tự tắt
+ // After 3 seconds the notification will turn off automatically
   useEffect(() => {
     if (showAlert) {
       const timer = setTimeout(() => {
@@ -256,7 +234,7 @@ function App() {
                   show={modalShow}
                   onHide={() => setModalShow(false)}
                   dispatch={dispatch}
-                  setShowAlert={setShowAlert} // thông báo hiện
+                  setShowAlert={setShowAlert} // Show notification
                 />
               </Navbar.Collapse>
             </Container>
@@ -268,43 +246,42 @@ function App() {
         <Row>
           <Carousel slide={false}>
             <Carousel.Item>
-              <img
-                src={img1}
-                alt="ảnh 1"
-                className="d-block w-100"
-                style={{ objectFit: "cover", height: "300px" }}
-              />
+              <img className="d-block w-100" src={img1} alt="First slide" />
               <Carousel.Caption>
-                <h3>First slide label</h3>
+                <h3>Neapolitan Pizza</h3>
                 <p>
-                  Nulla vitae elit libero, a pharetra augue mollis interdum.
+                  if you are looking for a traditional Italian pizza, the
+                  Neapolitan is the best option
                 </p>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-              <img
-                src={img2}
-                alt="ảnh 2"
-                className="d-block w-100"
-                style={{ objectFit: "cover", height: "300px" }}
-              />
+              <img className="d-block w-100" src={img2} alt="Second slide" />
               <Carousel.Caption>
-                <h3>Second slide label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h3>Neapolitan Pizza</h3>
+                <p>
+                  if you are looking for a traditional Italian pizza, the
+                  Neapolitan is the best option
+                </p>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-              <img
-                src={img3}
-                alt="ảnh 3"
-                className="d-block w-100"
-                style={{ objectFit: "cover", height: "300px" }}
-              />
+              <img className="d-block w-100" src={img3} alt="Third slide" />
               <Carousel.Caption>
-                <h3>Third slide label</h3>
+                <h3>Neapolitan Pizza</h3>
                 <p>
-                  Praesent commodo cursus magna, vel scelerisque nisl
-                  consectetur.
+                  if you are looking for a traditional Italian pizza, the
+                  Neapolitan is the best option
+                </p>
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+              <img className="d-block w-100" src={img4} alt="Third slide" />
+              <Carousel.Caption>
+                <h3>Neapolitan Pizza</h3>
+                <p>
+                  if you are looking for a traditional Italian pizza, the
+                  Neapolitan is the best option
                 </p>
               </Carousel.Caption>
             </Carousel.Item>
@@ -313,43 +290,108 @@ function App() {
         {/*END Carousel */}
 
         {/* CARD  */}
-        <Row className="mt-5">
-          {data.map((item, _) => (
-            <Col md={3} className="mb-3" key={item.id}>
-              <Card className="h-100 d-flex flex-column">
-                <Card.Img
-                  variant="top"
-                  src={item.thumbnail}
-                  className="card-image"
-                />
-                <Card.Body className="d-flex flex-column">
-                  <Card.Title>{item.title}</Card.Title>
-                  <Card.Text className="flex-grow-1">
-                    {item.description}
-                  </Card.Text>
-                  <Card.Text
-                    className="red-price"
-                    style={{
-                      color: "red",
-                      fontSize: "24px",
-                      fontWeight: "500",
-                    }}
-                  >
-                    Price: {item.price.toFixed(2)}$
-                  </Card.Text>
-                  <Button
-                    variant="primary"
-                    onClick={() =>
-                      dispatch({ type: "ADD_TO_CART", payload: item })
-                    }
-                  >
-                    Buy
-                  </Button>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
+        <div className="container p-5">
+          <h1 className="text-left p-3">Our Menu</h1>
+          <div className="d-flex">
+            <Card style={{ width: "18rem" }} className="mx-3">
+              <Card.Img variant="top" src={menu1} />
+              <Card.Body>
+                <Card.Title>Margenrita Pizza</Card.Title>
+                <Card.Text>Price: $19.99</Card.Text>
+                <Button
+                  variant="primary"
+                  onClick={() =>
+                    dispatch({
+                      type: "ADD_TO_CART",
+                      payload: {
+                        id: 1,
+                        title: "Margenrita Pizza",
+                        description: "Margenrita Pizza",
+                        price: 19.99,
+                        thumbnail: menu1,
+                      },
+                    })
+                  }
+                >
+                  Buy
+                </Button>
+              </Card.Body>
+            </Card>
+            <Card style={{ width: "18rem" }} className="mx-3">
+              <Card.Img variant="top" src={menu2} />
+              <Card.Body>
+                <Card.Title>Mushroom Pizza</Card.Title>
+                <Card.Text>Price: $19.99</Card.Text>
+                <Button
+                  variant="primary"
+                  onClick={() =>
+                    dispatch({
+                      type: "ADD_TO_CART",
+                      payload: {
+                        id: 2,
+                        title: "Mushroom Pizza",
+                        description: "Mushroom Pizza",
+                        price: 19.99,
+                        thumbnail: menu2,
+                      },
+                    })
+                  }
+                >
+                  Buy
+                </Button>
+              </Card.Body>
+            </Card>
+            <Card style={{ width: "18rem" }} className="mx-3">
+              <Card.Img variant="top" src={menu3} />
+              <Card.Body>
+                <Card.Title>Hawaiian Pizza</Card.Title>
+                <Card.Text>Price: $19.99</Card.Text>
+                <Button
+                  variant="primary"
+                  onClick={() =>
+                    dispatch({
+                      type: "ADD_TO_CART",
+                      payload: {
+                        id: 3,
+                        title: "Hawaiian Pizza",
+                        description: "Hawaiian Pizza",
+                        price: 19.99,
+                        thumbnail: menu3,
+                      },
+                    })
+                  }
+                >
+                  Buy
+                </Button>
+              </Card.Body>
+            </Card>
+            <Card style={{ width: "18rem" }} className="mx-3">
+              <Card.Img variant="top" src={menu4} />
+              <Card.Body>
+                <Card.Title>Pesto Pizza</Card.Title>
+                <Card.Text>Price: $19.99</Card.Text>
+                <Button
+                  variant="primary"
+                  onClick={() =>
+                    dispatch({
+                      type: "ADD_TO_CART",
+                      payload: {
+                        id: 4,
+                        title: "Pesto Pizza",
+                        description: "Pesto Pizza",
+                        price: 19.99,
+                        thumbnail: menu4,
+                      },
+                    })
+                  }
+                >
+                  Buy
+                </Button>
+              </Card.Body>
+            </Card>
+          </div>
+        </div>
+
         {/* END CARD  */}
       </Container>
     </>
